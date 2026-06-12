@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SnugTales – A brand-new bedtime story, every single night.</title>
+  <meta name="description" content="SnugTales creates personalised AI bedtime stories for your kids every night — tailored to their names, ages, and what happened in their day." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --night: #0a1230;
+      --night-soft: #121c42;
+      --card: #1b2856;
+      --moon: #f5c842;
+      --lavender: #a0a8e0;
+      --text: #f0f2ff;
+      --text-soft: #c4c8e8;
+      --text-faint: #8890c4;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--night);
+      color: var(--text-soft);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 40px;
+      background: rgba(10, 18, 48, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .nav-logo { font-size: 20px; font-weight: 700; color: var(--moon); }
+
+    .nav-links { display: flex; align-items: center; gap: 32px; }
+    .nav-links a { font-size: 15px; color: var(--text-soft); transition: color .2s; }
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-cta {
+      background: var(--moon);
+      color: #1a0e00;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 10px 20px;
+      border-radius: 50px;
+      transition: opacity .2s;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(245,200,66,0.12) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -60%);
+      pointer-events: none;
+    }
+
+    .hero-logo {
+      width: 160px;
+      height: 160px;
+      margin-bottom: 32px;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.15;
+      max-width: 780px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span { color: var(--moon); }
+
+    .hero p {
+      font-size: clamp(17px, 2vw, 20px);
+      color: var(--text-soft);
+      max-width: 520px;
+      margin-bottom: 40px;
+    }
+
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--moon);
+      color: #1a0e00;
+      font-weight: 700;
+      font-size: 17px;
+      padding: 16px 32px;
+      border-radius: 50px;
+      transition: opacity .2s, transform .2s;
+    }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      font-size: 16px;
+      color: var(--lavender);
+      padding: 16px 24px;
+      border: 1.5px solid rgba(160,168,224,0.3);
+      border-radius: 50px;
+      transition: border-color .2s, color .2s;
+    }
+    .btn-ghost:hover { border-color: var(--lavender); color: var(--text); }
+
+    .hero-note {
+      margin-top: 24px;
+      font-size: 13px;
+      color: var(--text-faint);
+    }
+
+    /* FEATURES */
+    .features {
+      padding: 100px 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      text-align: center;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--moon);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 64px;
+      line-height: 1.25;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .feature-card {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 20px;
+      padding: 36px 32px;
+      transition: transform .2s, border-color .2s;
+    }
+    .feature-card:hover { transform: translateY(-4px); border-color: rgba(245,200,66,0.2); }
+
+    .feature-emoji { font-size: 36px; margin-bottom: 16px; }
+
+    .feature-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .feature-desc { font-size: 15px; color: var(--text-soft); line-height: 1.65; }
+
+    /* HOW IT WORKS */
+    .how {
+      background: var(--night-soft);
+      padding: 100px 24px;
+    }
+
+    .how-inner { max-width: 900px; margin: 0 auto; }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 40px;
+      margin-top: 64px;
+    }
+
+    .step { text-align: center; }
+
+    .step-number {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: rgba(245,200,66,0.12);
+      border: 1.5px solid rgba(245,200,66,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--moon);
+      margin: 0 auto 20px;
+    }
+
+    .step-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .step-desc { font-size: 14px; color: var(--text-soft); line-height: 1.65; }
+
+    /* CTA */
+    .cta {
+      padding: 100px 24px;
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .cta p {
+      font-size: 18px;
+      color: var(--text-soft);
+      max-width: 480px;
+      margin: 0 auto 40px;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 40px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .footer-logo { font-size: 18px; font-weight: 700; color: var(--moon); }
+
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 14px; color: var(--text-faint); transition: color .2s; }
+    .footer-links a:hover { color: var(--text-soft); }
+
+    .footer-copy { font-size: 13px; color: var(--text-faint); }
+
+    @media (max-width: 600px) {
+      nav { padding: 14px 20px; }
+      .nav-links { display: none; }
+      footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="nav-logo">SnugTales</span>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#how">How it works</a>
+      <a href="support.html">Support</a>
+      <a href="#download" class="nav-cta">Download</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <img src="assets/logo.png" alt="SnugTales" class="hero-logo" onerror="this.style.display='none'" />
+    <h1>Every night,<br /><span>a new adventure.</span></h1>
+    <p>A brand-new personalised bedtime story, made just for your kids, every single night.</p>
+    <div class="hero-actions">
+      <a href="#download" class="btn-primary">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        Download on the App Store
+      </a>
+      <a href="#features" class="btn-ghost">See how it works ↓</a>
+    </div>
+    <p class="hero-note">Free to get started · iOS</p>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features" id="features">
+    <p class="section-label">Features</p>
+    <h2 class="section-title">Stories as unique<br />as your children</h2>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-emoji">🌙</div>
+        <h3 class="feature-title">Personalised every night</h3>
+        <p class="feature-desc">Each story is freshly generated for your kids — using their names, ages, and what happened in their day. No two nights are the same.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-emoji">✨</div>
+        <h3 class="feature-title">Choose your adventure</h3>
+        <p class="feature-desc">Pick from adventure, fantasy, mystery, science, or cozy stories. Short, medium, or long — whatever fits bedtime tonight.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-emoji">💛</div>
+        <h3 class="feature-title">Sneak in today</h3>
+        <p class="feature-desc">Tell us what happened today — a trip to the park, a funny moment — and watch it magically appear in tonight's story.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-emoji">📚</div>
+        <h3 class="feature-title">Story library</h3>
+        <p class="feature-desc">Every story is saved to your library so you can re-read favourites. Kids always have a bedtime story, even offline.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-emoji">🌟</div>
+        <h3 class="feature-title">A little lesson, never preachy</h3>
+        <p class="feature-desc">Optionally weave in a moral — kindness, courage, honesty — and the story will live it out naturally, never lecture it.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-emoji">👨‍👩‍👧‍👦</div>
+        <h3 class="feature-title">Built for families</h3>
+        <p class="feature-desc">Add multiple kids with different ages and preferences. Stories are always age-appropriate and perfectly calibrated.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how" id="how">
+    <div class="how-inner">
+      <p class="section-label">How it works</p>
+      <h2 class="section-title">Bedtime in three taps</h2>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3 class="step-title">Set up your family</h3>
+          <p class="step-desc">Add your kids' names and ages once. SnugTales remembers everything so every night starts instantly.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3 class="step-title">Customise tonight</h3>
+          <p class="step-desc">Choose who's listening, pick a story type, add what happened today. Takes about 30 seconds.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3 class="step-title">Read together</h3>
+          <p class="step-desc">A brand-new story appears in moments. Read it aloud, snuggle up, and drift off into the adventure.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="download">
+    <h2>Start your first story<br />tonight. 🌙</h2>
+    <p>Free to download. A new bedtime adventure every single night.</p>
+    <a href="#" class="btn-primary">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      Download on the App Store
+    </a>
+  </section>
+
+  <footer>
+    <span class="footer-logo">SnugTales</span>
+    <div class="footer-links">
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Privacy Policy</a>
+    </div>
+    <span class="footer-copy">&copy; 2026 SnugTales. All rights reserved.</span>
+  </footer>
+
+</body>
+</html>
