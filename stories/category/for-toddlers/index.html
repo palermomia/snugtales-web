@@ -9,17 +9,19 @@ SnugTales turns any bedtime tale into a personalized story where your child is t
 Make it about your child — free →
 </a> </aside> <section class="faq"> <h2>Frequently asked questions</h2> <details> <summary>What makes a good bedtime story for a toddler?</summary> <p>Keep it short (3–5 minutes), use simple repetitive language, and end calmly. Toddlers settle best with gentle, predictable stories that wind down rather than excite.</p> </details><details> <summary>How long should a toddler bedtime story be?</summary> <p>Around 3–5 minutes is ideal for ages 1–3. Every story in this collection lists its reading time so you can pick one that fits your night.</p> </details><details> <summary>Are these stories free to read?</summary> <p>Yes — every story here is free to read online. In the SnugTales app you can also turn any story into a personalized tale starring your own child.</p> </details> </section>  </main> <footer class="site-foot"> <div class="wrap foot-inner"> <span>© 2026 SnugTales. Free bedtime stories your kids will love — and can star in.</span> <nav class="navlinks"> <a href="https://snugtalesapp.com">Home</a> <a href="https://snugtalesapp.com/privacy/">Privacy</a> <a href="https://snugtalesapp.com/support/">Support</a> </nav> </div> </footer> <div class="sticky-app"> <span>Make any story star <strong>your</strong> child — free</span> <a href="https://snugtalesapp.com/#download" data-cta="sticky">Get the app →</a> </div> <!--
       Progressive enhancement: the static HTML links every app CTA to the
-      homepage (/#download) — good for crawlers and no-JS. On a real device we
-      rewrite those links straight to the right store: iOS → App Store,
-      Android → Play (open testing). Desktop keeps the homepage fallback.
+      homepage (/#download) — good for crawlers and no-JS. On iOS we rewrite
+      straight to the App Store (one tap). Android currently keeps the homepage
+      fallback: the Play listing isn't public yet (closed testing, and Open
+      testing is gated behind production access). Once Android reaches
+      production, set `android` to SITE.playStore to route Android → Play.
     --> <script>(function(){const ios = "https://apps.apple.com/us/app/snugtales/id6779449925";
-const android = "https://play.google.com/store/apps/details?id=com.snugtales.app";
+const android = "";
 
       (function () {
         var ua = navigator.userAgent || '';
         var target = /iPhone|iPad|iPod/i.test(ua)
           ? ios
-          : /Android/i.test(ua)
+          : android && /Android/i.test(ua)
             ? android
             : null;
         if (!target) return;

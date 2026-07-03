@@ -31,17 +31,19 @@ SnugTales turns any bedtime tale into a personalized story where your child is t
 Make it about your child — free →
 </a> </aside> <section> <h2>Talk about it together</h2> <ul> <li>What makes you feel brave when it is dark?</li><li>Ember was scared at first. What helped him feel better?</li><li>If you had a little flame like Ember, what would you use it for?</li> </ul> </section> </article> <section> <h2>More stories like this</h2> <div class="grid"> <a class="card" href="/stories/luna-and-the-lost-star/"> <h3>Luna and the Lost Star</h3> <p class="muted">When a little star tumbles out of the night sky, a kind girl named Luna helps it find its way home — and learns that helping others shines brightest of all.</p> <ul class="meta-row"> <li class="pill">Ages 3-6</li> <li class="pill">6 min</li> </ul> </a><a class="card" href="/stories/the-sleepy-little-bear/"> <h3>The Sleepy Little Bear</h3> <p class="muted">A restless bear cub who does not want winter to end learns that a good long sleep is a gift, not a goodbye.</p> <ul class="meta-row"> <li class="pill">Ages 1-3</li> <li class="pill">4 min</li> </ul> </a><a class="card" href="/stories/bella-the-brave-firefly/"> <h3>Bella the Brave Firefly</h3> <p class="muted">A tiny firefly whose light is smaller than all the others discovers that even the littlest glow can guide someone home.</p> <ul class="meta-row"> <li class="pill">Ages 3-6</li> <li class="pill">5 min</li> </ul> </a> </div> </section> </main> <footer class="site-foot"> <div class="wrap foot-inner"> <span>© 2026 SnugTales. Free bedtime stories your kids will love — and can star in.</span> <nav class="navlinks"> <a href="https://snugtalesapp.com">Home</a> <a href="https://snugtalesapp.com/privacy/">Privacy</a> <a href="https://snugtalesapp.com/support/">Support</a> </nav> </div> </footer> <div class="sticky-app"> <span>Make any story star <strong>your</strong> child — free</span> <a href="https://snugtalesapp.com/#download" data-cta="sticky">Get the app →</a> </div> <!--
       Progressive enhancement: the static HTML links every app CTA to the
-      homepage (/#download) — good for crawlers and no-JS. On a real device we
-      rewrite those links straight to the right store: iOS → App Store,
-      Android → Play (open testing). Desktop keeps the homepage fallback.
+      homepage (/#download) — good for crawlers and no-JS. On iOS we rewrite
+      straight to the App Store (one tap). Android currently keeps the homepage
+      fallback: the Play listing isn't public yet (closed testing, and Open
+      testing is gated behind production access). Once Android reaches
+      production, set `android` to SITE.playStore to route Android → Play.
     --> <script>(function(){const ios = "https://apps.apple.com/us/app/snugtales/id6779449925";
-const android = "https://play.google.com/store/apps/details?id=com.snugtales.app";
+const android = "";
 
       (function () {
         var ua = navigator.userAgent || '';
         var target = /iPhone|iPad|iPod/i.test(ua)
           ? ios
-          : /Android/i.test(ua)
+          : android && /Android/i.test(ua)
             ? android
             : null;
         if (!target) return;
