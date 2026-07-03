@@ -27,4 +27,26 @@ SnugTales turns any bedtime tale into a personalized story where your child is t
     hero — with their name, their world, even narrated in your voice. Free in the app.
 </p> <a class="cta" href="https://snugtalesapp.com/#download" data-cta="make-it-about-my-child">
 Make it about your child — free →
-</a> </aside> <section> <h2>Talk about it together</h2> <ul> <li>How did Luna help the little star?</li><li>Have you ever helped someone who was lost or sad?</li><li>What do you think the star did to thank Luna?</li> </ul> </section> </article> <section> <h2>More stories like this</h2> <div class="grid"> <a class="card" href="/stories/the-brave-little-dragon/"> <h3>The Brave Little Dragon</h3> <p class="muted">A tiny dragon who is afraid of the dark discovers that his own gentle fire is the coziest nightlight of all.</p> <ul class="meta-row"> <li class="pill">Ages 3-6</li> <li class="pill">5 min</li> </ul> </a><a class="card" href="/stories/a-blanket-fort-for-two/"> <h3>A Blanket Fort for Two</h3> <p class="muted">A little boy builds the greatest blanket fort ever made, then learns that the very best forts are the ones you invite someone else to share.</p> <ul class="meta-row"> <li class="pill">Ages 3-6</li> <li class="pill">5 min</li> </ul> </a><a class="card" href="/stories/bella-the-brave-firefly/"> <h3>Bella the Brave Firefly</h3> <p class="muted">A tiny firefly whose light is smaller than all the others discovers that even the littlest glow can guide someone home.</p> <ul class="meta-row"> <li class="pill">Ages 3-6</li> <li class="pill">5 min</li> </ul> </a> </div> </section> </main> <footer class="site-foot"> <div class="wrap foot-inner"> <span>© 2026 SnugTales. Free bedtime stories your kids will love — and can star in.</span> <nav class="navlinks"> <a href="https://snugtalesapp.com">Home</a> <a href="https://snugtalesapp.com/privacy/">Privacy</a> <a href="https://snugtalesapp.com/support/">Support</a> </nav> </div> </footer> <div class="sticky-app"> <span>Make any story star <strong>your</strong> child — free</span> <a href="https://snugtalesapp.com/#download" data-cta="sticky">Get the app →</a> </div> </body></html>
+</a> </aside> <section> <h2>Talk about it together</h2> <ul> <li>How did Luna help the little star?</li><li>Have you ever helped someone who was lost or sad?</li><li>What do you think the star did to thank Luna?</li> </ul> </section> </article> <section> <h2>More stories like this</h2> <div class="grid"> <a class="card" href="/stories/the-brave-little-dragon/"> <h3>The Brave Little Dragon</h3> <p class="muted">A tiny dragon who is afraid of the dark discovers that his own gentle fire is the coziest nightlight of all.</p> <ul class="meta-row"> <li class="pill">Ages 3-6</li> <li class="pill">5 min</li> </ul> </a><a class="card" href="/stories/a-blanket-fort-for-two/"> <h3>A Blanket Fort for Two</h3> <p class="muted">A little boy builds the greatest blanket fort ever made, then learns that the very best forts are the ones you invite someone else to share.</p> <ul class="meta-row"> <li class="pill">Ages 3-6</li> <li class="pill">5 min</li> </ul> </a><a class="card" href="/stories/bella-the-brave-firefly/"> <h3>Bella the Brave Firefly</h3> <p class="muted">A tiny firefly whose light is smaller than all the others discovers that even the littlest glow can guide someone home.</p> <ul class="meta-row"> <li class="pill">Ages 3-6</li> <li class="pill">5 min</li> </ul> </a> </div> </section> </main> <footer class="site-foot"> <div class="wrap foot-inner"> <span>© 2026 SnugTales. Free bedtime stories your kids will love — and can star in.</span> <nav class="navlinks"> <a href="https://snugtalesapp.com">Home</a> <a href="https://snugtalesapp.com/privacy/">Privacy</a> <a href="https://snugtalesapp.com/support/">Support</a> </nav> </div> </footer> <div class="sticky-app"> <span>Make any story star <strong>your</strong> child — free</span> <a href="https://snugtalesapp.com/#download" data-cta="sticky">Get the app →</a> </div> <!--
+      Progressive enhancement: the static HTML links every app CTA to the
+      homepage (/#download) — good for crawlers and no-JS. On a real device we
+      rewrite those links straight to the right store: iOS → App Store,
+      Android → Play (open testing). Desktop keeps the homepage fallback.
+    --> <script>(function(){const ios = "https://apps.apple.com/us/app/snugtales/id6779449925";
+const android = "https://play.google.com/store/apps/details?id=com.snugtales.app";
+
+      (function () {
+        var ua = navigator.userAgent || '';
+        var target = /iPhone|iPad|iPod/i.test(ua)
+          ? ios
+          : /Android/i.test(ua)
+            ? android
+            : null;
+        if (!target) return;
+        document.querySelectorAll('a[href*="#download"]').forEach(function (a) {
+          a.href = target;
+          a.target = '_blank';
+          a.rel = 'noopener';
+        });
+      })();
+    })();</script> </body> </html>

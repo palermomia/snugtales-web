@@ -7,4 +7,26 @@ SnugTales turns any bedtime tale into a personalized story where your child is t
     hero — with their name, their world, even narrated in your voice. Free in the app.
 </p> <a class="cta" href="https://snugtalesapp.com/#download" data-cta="make-it-about-my-child">
 Make it about your child — free →
-</a> </aside> <section class="faq"> <h2>Frequently asked questions</h2> <details> <summary>Won’t an adventure story make my child too excited for bed?</summary> <p>Not these. Each adventure builds gently and always lands on a calm, sleepy ending — the excitement fades into coziness, so your child winds down instead of winding up.</p> </details><details> <summary>What age are adventure bedtime stories best for?</summary> <p>They work well for ages 3–7, when imaginations are growing. Every story shows its age range and reading time.</p> </details><details> <summary>Are the stories free?</summary> <p>Yes, all free to read online. The SnugTales app can also personalize any adventure so your child is the hero of the journey.</p> </details> </section>  </main> <footer class="site-foot"> <div class="wrap foot-inner"> <span>© 2026 SnugTales. Free bedtime stories your kids will love — and can star in.</span> <nav class="navlinks"> <a href="https://snugtalesapp.com">Home</a> <a href="https://snugtalesapp.com/privacy/">Privacy</a> <a href="https://snugtalesapp.com/support/">Support</a> </nav> </div> </footer> <div class="sticky-app"> <span>Make any story star <strong>your</strong> child — free</span> <a href="https://snugtalesapp.com/#download" data-cta="sticky">Get the app →</a> </div> </body></html>
+</a> </aside> <section class="faq"> <h2>Frequently asked questions</h2> <details> <summary>Won’t an adventure story make my child too excited for bed?</summary> <p>Not these. Each adventure builds gently and always lands on a calm, sleepy ending — the excitement fades into coziness, so your child winds down instead of winding up.</p> </details><details> <summary>What age are adventure bedtime stories best for?</summary> <p>They work well for ages 3–7, when imaginations are growing. Every story shows its age range and reading time.</p> </details><details> <summary>Are the stories free?</summary> <p>Yes, all free to read online. The SnugTales app can also personalize any adventure so your child is the hero of the journey.</p> </details> </section>  </main> <footer class="site-foot"> <div class="wrap foot-inner"> <span>© 2026 SnugTales. Free bedtime stories your kids will love — and can star in.</span> <nav class="navlinks"> <a href="https://snugtalesapp.com">Home</a> <a href="https://snugtalesapp.com/privacy/">Privacy</a> <a href="https://snugtalesapp.com/support/">Support</a> </nav> </div> </footer> <div class="sticky-app"> <span>Make any story star <strong>your</strong> child — free</span> <a href="https://snugtalesapp.com/#download" data-cta="sticky">Get the app →</a> </div> <!--
+      Progressive enhancement: the static HTML links every app CTA to the
+      homepage (/#download) — good for crawlers and no-JS. On a real device we
+      rewrite those links straight to the right store: iOS → App Store,
+      Android → Play (open testing). Desktop keeps the homepage fallback.
+    --> <script>(function(){const ios = "https://apps.apple.com/us/app/snugtales/id6779449925";
+const android = "https://play.google.com/store/apps/details?id=com.snugtales.app";
+
+      (function () {
+        var ua = navigator.userAgent || '';
+        var target = /iPhone|iPad|iPod/i.test(ua)
+          ? ios
+          : /Android/i.test(ua)
+            ? android
+            : null;
+        if (!target) return;
+        document.querySelectorAll('a[href*="#download"]').forEach(function (a) {
+          a.href = target;
+          a.target = '_blank';
+          a.rel = 'noopener';
+        });
+      })();
+    })();</script> </body> </html>

@@ -27,4 +27,26 @@ SnugTales turns any bedtime tale into a personalized story where your child is t
     hero — with their name, their world, even narrated in your voice. Free in the app.
 </p> <a class="cta" href="https://snugtalesapp.com/#download" data-cta="make-it-about-my-child">
 Make it about your child — free →
-</a> </aside> <section> <h2>Talk about it together</h2> <ul> <li>Why was Marlin happier after he shared his shimmer?</li><li>What is something special about you that you could share?</li><li>How does it feel when a friend shares with you?</li> </ul> </section> </article> <section> <h2>More stories like this</h2> <div class="grid"> <a class="card" href="/stories/the-brave-little-dragon/"> <h3>The Brave Little Dragon</h3> <p class="muted">A tiny dragon who is afraid of the dark discovers that his own gentle fire is the coziest nightlight of all.</p> <ul class="meta-row"> <li class="pill">Ages 3-6</li> <li class="pill">5 min</li> </ul> </a><a class="card" href="/stories/luna-and-the-lost-star/"> <h3>Luna and the Lost Star</h3> <p class="muted">When a little star tumbles out of the night sky, a kind girl named Luna helps it find its way home — and learns that helping others shines brightest of all.</p> <ul class="meta-row"> <li class="pill">Ages 3-6</li> <li class="pill">6 min</li> </ul> </a><a class="card" href="/stories/the-sleepy-little-bear/"> <h3>The Sleepy Little Bear</h3> <p class="muted">A restless bear cub who does not want winter to end learns that a good long sleep is a gift, not a goodbye.</p> <ul class="meta-row"> <li class="pill">Ages 1-3</li> <li class="pill">4 min</li> </ul> </a> </div> </section> </main> <footer class="site-foot"> <div class="wrap foot-inner"> <span>© 2026 SnugTales. Free bedtime stories your kids will love — and can star in.</span> <nav class="navlinks"> <a href="https://snugtalesapp.com">Home</a> <a href="https://snugtalesapp.com/privacy/">Privacy</a> <a href="https://snugtalesapp.com/support/">Support</a> </nav> </div> </footer> <div class="sticky-app"> <span>Make any story star <strong>your</strong> child — free</span> <a href="https://snugtalesapp.com/#download" data-cta="sticky">Get the app →</a> </div> </body></html>
+</a> </aside> <section> <h2>Talk about it together</h2> <ul> <li>Why was Marlin happier after he shared his shimmer?</li><li>What is something special about you that you could share?</li><li>How does it feel when a friend shares with you?</li> </ul> </section> </article> <section> <h2>More stories like this</h2> <div class="grid"> <a class="card" href="/stories/the-brave-little-dragon/"> <h3>The Brave Little Dragon</h3> <p class="muted">A tiny dragon who is afraid of the dark discovers that his own gentle fire is the coziest nightlight of all.</p> <ul class="meta-row"> <li class="pill">Ages 3-6</li> <li class="pill">5 min</li> </ul> </a><a class="card" href="/stories/luna-and-the-lost-star/"> <h3>Luna and the Lost Star</h3> <p class="muted">When a little star tumbles out of the night sky, a kind girl named Luna helps it find its way home — and learns that helping others shines brightest of all.</p> <ul class="meta-row"> <li class="pill">Ages 3-6</li> <li class="pill">6 min</li> </ul> </a><a class="card" href="/stories/the-sleepy-little-bear/"> <h3>The Sleepy Little Bear</h3> <p class="muted">A restless bear cub who does not want winter to end learns that a good long sleep is a gift, not a goodbye.</p> <ul class="meta-row"> <li class="pill">Ages 1-3</li> <li class="pill">4 min</li> </ul> </a> </div> </section> </main> <footer class="site-foot"> <div class="wrap foot-inner"> <span>© 2026 SnugTales. Free bedtime stories your kids will love — and can star in.</span> <nav class="navlinks"> <a href="https://snugtalesapp.com">Home</a> <a href="https://snugtalesapp.com/privacy/">Privacy</a> <a href="https://snugtalesapp.com/support/">Support</a> </nav> </div> </footer> <div class="sticky-app"> <span>Make any story star <strong>your</strong> child — free</span> <a href="https://snugtalesapp.com/#download" data-cta="sticky">Get the app →</a> </div> <!--
+      Progressive enhancement: the static HTML links every app CTA to the
+      homepage (/#download) — good for crawlers and no-JS. On a real device we
+      rewrite those links straight to the right store: iOS → App Store,
+      Android → Play (open testing). Desktop keeps the homepage fallback.
+    --> <script>(function(){const ios = "https://apps.apple.com/us/app/snugtales/id6779449925";
+const android = "https://play.google.com/store/apps/details?id=com.snugtales.app";
+
+      (function () {
+        var ua = navigator.userAgent || '';
+        var target = /iPhone|iPad|iPod/i.test(ua)
+          ? ios
+          : /Android/i.test(ua)
+            ? android
+            : null;
+        if (!target) return;
+        document.querySelectorAll('a[href*="#download"]').forEach(function (a) {
+          a.href = target;
+          a.target = '_blank';
+          a.rel = 'noopener';
+        });
+      })();
+    })();</script> </body> </html>
